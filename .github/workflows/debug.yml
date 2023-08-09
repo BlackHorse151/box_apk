@@ -36,26 +36,27 @@ jobs:
         gradle-home-cache-cleanup: true
 
     - name: Build Release APK
+      id: build_apk
       run: ./gradlew app:assembleRelease
 
     - name: Display files in directory
       run: |
         ls app/build/outputs/apk/release
 
-    - uses: r0adkll/sign-android-release@v1
-      name: Sign app APK
-      id: sign_apks
-      with:
-        releaseDirectory: app/build/outputs/apk/release
-        signingKeyBase64: ${{ secrets.KEYSTORE_CONTENT }}
-        alias: key.alias
-        keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
-        keyPassword: ${{ secrets.KEY_PASSWORD }}
+    #- uses: r0adkll/sign-android-release@v1
+    #  name: Sign app APK
+    #  id: sign_apks
+    #  with:
+    #    releaseDirectory: app/build/outputs/apk/release
+    #    signingKeyBase64: ${{ secrets.KEYSTORE_CONTENT }}
+    #    alias: key.alias
+    #    keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+    #    keyPassword: ${{ secrets.KEY_PASSWORD }}
 
     - name: Rename Apks
       run: |
         mkdir -p APKs
-        mv ${{ steps.sign_apks.outputs.signedReleaseFile }} APKs/box-manager-${{ steps.get_head.outputs.head }}-prerelease.apk
+        mv ${{ steps.build_apk.outputs.signedReleaseFile }} APKs/box-manager-${{ steps.get_head.outputs.head }}-prerelease.apk
 
     - uses: actions/upload-artifact@v2
       with:
