@@ -17,8 +17,8 @@ import rikka.material.app.DayNightDelegate;
 public final class ThemeUtil {
     private static final SharedPreferences preferences = App.getPreferences();
 
-    public static final String MODE_NIGHT_FOLLOW_SYSTEM = "MODE_NIGHT_FOLLOW_SYSTEM";
-    public static final String MODE_NIGHT_NO = "MODE_NIGHT_NO";
+    public static final String MODE_NIGHT_FOLLOW_SYSTEM = "MODE_NIGHT_YES";
+    public static final String MODE_NIGHT_NO = "MODE_NIGHT_YES";
     public static final String MODE_NIGHT_YES = "MODE_NIGHT_YES";
 
     private static final String THEME_DEFAULT = "DEFAULT";
@@ -123,7 +123,7 @@ public final class ThemeUtil {
         switch (mode) {
             case MODE_NIGHT_FOLLOW_SYSTEM:
             default:
-                return DayNightDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
+                return DayNightDelegate.MODE_NIGHT_YES;
             case MODE_NIGHT_YES:
                 return DayNightDelegate.MODE_NIGHT_YES;
             case MODE_NIGHT_NO:
@@ -132,6 +132,6 @@ public final class ThemeUtil {
     }
 
     public static int getDarkTheme() {
-        return getDarkTheme(preferences.getString("dark_theme", MODE_NIGHT_FOLLOW_SYSTEM));
+        return getDarkTheme(preferences.getString("dark_theme", MODE_NIGHT_YES));
     }
 }
