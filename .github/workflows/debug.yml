@@ -1,17 +1,7 @@
 name: Build APKs
 
 on:
-  push:
-    branches:
-      - master
-      - dev
-    paths-ignore:
-      - "docs/**"
-      - "README.md"
-  pull_request:
-    branches:
-      - master
-      - dev
+  workflow_dispatch:
 
 jobs:
   build:
@@ -21,10 +11,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Get tags
-      id: get_head
-      run: |
-        echo "head=$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
 
     - uses: actions/setup-java@v3
       with:
