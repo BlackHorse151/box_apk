@@ -574,6 +574,22 @@ public class MainActivity extends BaseActivity {
                 }
             });
 
+        CheckBox cbusage = inflate.findViewById(R.id.Rusage);
+        cbusage.setChecked(Boolean.parseBoolean(TermUtil.getUsage()));
+        
+        cbusage.setOnCheckedChangeListener(
+            new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean z) {
+                    if (z) {
+                        TermUtil.setUsage("true");
+                    } else {
+                        TermUtil.setUsage("false");
+                    }
+                }
+            });
+
+        
         CheckBox cbCgr = inflate.findViewById(R.id.cgr);
         cbCgr.setChecked(Boolean.parseBoolean(TermUtil.getCgr()));
         
