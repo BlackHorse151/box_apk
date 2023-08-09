@@ -50,7 +50,7 @@ public final class ThemeUtil {
     }
 
     private static boolean isBlackNightTheme() {
-        return preferences.getBoolean("black_dark_theme", true);
+        return preferences.getBoolean("black_dark_theme", false);
     }
 
     public static String getNightTheme(Context context) {
@@ -122,16 +122,17 @@ public final class ThemeUtil {
     public static int getDarkTheme(String mode) {
         switch (mode) {
             case MODE_NIGHT_FOLLOW_SYSTEM:
-            default:
                 return DayNightDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
             case MODE_NIGHT_YES:
                 return DayNightDelegate.MODE_NIGHT_YES;
             case MODE_NIGHT_NO:
                 return DayNightDelegate.MODE_NIGHT_NO;
+            case MODE_NIGHT_YES:
+                return DayNightDelegate.MODE_NIGHT_YES;
         }
     }
 
     public static int getDarkTheme() {
         return getDarkTheme(preferences.getString("dark_theme", MODE_NIGHT_YES));
     }
-}
+        }
