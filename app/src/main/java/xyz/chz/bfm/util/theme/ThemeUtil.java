@@ -127,7 +127,7 @@ public final class ThemeUtil {
                 return DayNightDelegate.MODE_NIGHT_YES;
             case MODE_NIGHT_NO:
                 return DayNightDelegate.MODE_NIGHT_NO;
-            case MODE_NIGHT_YES:
+            default:
                 return DayNightDelegate.MODE_NIGHT_YES;
         }
     }
