@@ -573,11 +573,11 @@ public class MainActivity extends BaseActivity {
                     }
                 }
             });
-
-        CheckBox cbusage = inflate.findViewById(R.id.Rusage);
-        cbusage.setChecked(Boolean.parseBoolean(TermUtil.getUsage()));
         
-        cbusage.setOnCheckedChangeListener(
+        CheckBox cbRusage = inflate.findViewById(R.id.Rusage);
+        cbRusage.setChecked(TermUtil.getUsage());
+        
+        cbRusage.setOnCheckedChangeListener(
             new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean z) {
@@ -588,7 +588,6 @@ public class MainActivity extends BaseActivity {
                     }
                 }
             });
-
         
         CheckBox cbCgr = inflate.findViewById(R.id.cgr);
         cbCgr.setChecked(Boolean.parseBoolean(TermUtil.getCgr()));
