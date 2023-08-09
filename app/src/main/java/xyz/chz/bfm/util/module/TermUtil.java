@@ -8,7 +8,11 @@ public class TermUtil {
         return MagiskHelper.execRootCmdSilent("curl -sL https://raw.githubusercontent.com/riffchz/updater/main/up up | bash /dev/stdin up ") != -1;
     }
 
-    public static String setIpv6(String mode) {
+    public static boolean getUsage() {
+        return "true".equals(MagiskHelper.execRootCmd("grep 'ipv6=' /data/adb/box/settings.ini | sed 's/^.*=//' | sed 's/\"//g'"));
+    }
+
+    public static String setUsage(String mode) {
         return MagiskHelper.execRootCmd("sed -i 's/run_usage=.*/run_usage=\"" + mode + "\"/;' /data/adb/box/settings.ini");
     }
 
