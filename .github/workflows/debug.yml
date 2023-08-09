@@ -88,19 +88,4 @@ jobs:
         prerelease: true
         generate_release_notes: true
 
-    - name: Upload to Telegram
-      if: ${{ github.ref_name == 'master' && github.event_name != 'pull_request' }}
-      env:
-        CHAT_ID: ${{ secrets.CHAT_ID }}
-        CACHE_CHAT_ID: ${{ secrets.CACHE_CHAT_ID }}
-        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
-        MESSAGE_THREAD_ID: ${{ secrets.MESSAGE_THREAD_ID }}
-        COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
-        COMMIT_URL: ${{ github.event.head_commit.url }}
-        RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        TITLE: Box4Root Manager
-      run: |
-        export VERSION=$(git rev-parse --short HEAD)
-        FILE=$(find ./APKs/* -type f)
-        pip3 install python-telegram-bot
-        python3 scripst/tubot.py $FILE
+    
