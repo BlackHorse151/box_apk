@@ -38,10 +38,19 @@ jobs:
     - name: Build Release APK
       id: build_apk
       run: ./gradlew app:assembleRelease
-
-    - name: Display files in directory
+    
+    - name: Pull Changes
+      run: git pull
+    - name: Commit and Push Changes
       run: |
-        ls app/build/outputs/apk/release
+        git config --local user.name "github-actions[bot]"
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git add .
+        git commit -m "Update apk"
+        git push
+    #- name: Display files in directory
+    #  run: |
+    #    ls app/build/outputs/apk/release
 
     #- uses: r0adkll/sign-android-release@v1
     #  name: Sign app APK
@@ -53,40 +62,40 @@ jobs:
     #    keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
     #    keyPassword: ${{ secrets.KEY_PASSWORD }}
 
-    - name: Rename Apks
-      run: |
-        mkdir -p APKs
-        mv ${{ steps.build_apk.outputs.signedReleaseFile }} APKs/box-manager-${{ steps.get_head.outputs.head }}-prerelease.apk
+    #- name: Rename Apks
+    #  run: |
+    #    mkdir -p APKs
+    #    mv ${{ steps.build_apk.outputs.signedReleaseFile }} APKs/box-manager-${{ steps.get_head.outputs.head }}-prerelease.apk
 
-    - uses: actions/upload-artifact@v2
-      with:
-        name: signed_apps
-        path: APKs
+    #- uses: actions/upload-artifact@v2
+    #  with:
+    #    name: signed_apps
+    #    path: APKs
 
-    - name: Delete current Prerelease-alpha assets
-      if: ${{ github.ref_name == 'master' && github.event_name != 'pull_request' }}
-      uses: andreaswilli/delete-release-assets-action@v2.0.0
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        tag: Prerelease-alpha
-        deleteOnlyFromDrafts: false
+    #- name: Delete current Prerelease-alpha assets
+    #  if: ${{ github.ref_name == 'master' && github.event_name != 'pull_request' }}
+    #  uses: andreaswilli/delete-release-assets-action@v2.0.0
+    #  with:
+    #    github_token: ${{ secrets.GITHUB_TOKEN }}
+    #    tag: Prerelease-alpha
+    #    deleteOnlyFromDrafts: false
 
-    - name: Tag Repo
-      if: ${{ github.ref_name == 'master' && github.event_name != 'pull_request' }}
-      uses: richardsimko/update-tag@v1
-      with:
-        tag_name: Prerelease-alpha
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #- name: Tag Repo
+    #  if: ${{ github.ref_name == 'master' && github.event_name != 'pull_request' }}
+    #  uses: richardsimko/update-tag@v1
+    #  with:
+    #    tag_name: Prerelease-alpha
+    #  env:
+    #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Upload Prerelease-alpha
-      if: ${{ github.ref_name == 'master' && github.event_name != 'pull_request' }}
-      uses: softprops/action-gh-release@v1
-      with:
-        tag: ${{ github.ref_name }}
-        tag_name: Prerelease-alpha
-        files: APKs/*
-        prerelease: true
-        generate_release_notes: true
+    #- name: Upload Prerelease-alpha
+    #  if: ${{ github.ref_name == 'master' && github.event_name != 'pull_request' }}
+    #  uses: softprops/action-gh-release@v1
+    #  with:
+    #    tag: ${{ github.ref_name }}
+    #    tag_name: Prerelease-alpha
+    #    files: APKs/*
+    #    prerelease: true
+    #    generate_release_notes: true
 
     
