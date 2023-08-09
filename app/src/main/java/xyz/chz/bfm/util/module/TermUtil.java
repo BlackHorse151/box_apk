@@ -9,7 +9,7 @@ public class TermUtil {
     }
 
     public static boolean getUsage() {
-        return "true".equals(MagiskHelper.execRootCmd("grep 'ipv6=' /data/adb/box/settings.ini | sed 's/^.*=//' | sed 's/\"//g'"));
+        return "true".equals(MagiskHelper.execRootCmd("grep 'run_usage=' /data/adb/box/settings.ini | sed 's/^.*=//' | sed 's/\"//g'"));
     }
 
     public static String setUsage(String mode) {
