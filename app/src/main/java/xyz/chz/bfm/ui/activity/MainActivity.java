@@ -139,16 +139,16 @@ public class MainActivity extends BaseActivity {
                                                         "\\[Warning\\]",
                                                         "<font color=\"#E04835\">[Warning] </font>")
                                                     .replaceAll(
-                                                        "\\Swap\\",
+                                                        "Swap",
                                                         "<font color=\"#E04835\">Swap</font>")
                                                     .replaceAll(
-                                                        "\\CPU\\",
+                                                        "CPU",
                                                         "<font color=\"#E04835\">CPU</font>")
                                                     .replaceAll(
-                                                        "\\Memory\\",
+                                                        "Memory",
                                                         "<font color=\"#E04835\">Memory</font>")
                                                     .replaceAll(
-                                                        "\\Runtime\\",
+                                                        "Runtime",
                                                         "<font color=\"#E04835\">Runtime</font>")
                                                     .replaceAll("\n", "<br>")));
                                         if (sp.getBoolean("cbScroLog", false)) {
