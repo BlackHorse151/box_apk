@@ -49,7 +49,7 @@
         <!-- MIUI -->
         <item
             name="android:forceDarkAllowed"
-            tools:targetApi="q">true</item>
+            tools:targetApi="q">false</item>
 
         <!-- Preference title -->
         <item name="android:textAppearanceListItem">?textAppearanceSubtitle1</item>
@@ -86,7 +86,7 @@
         <!-- MIUI -->
         <item
             name="android:forceDarkAllowed"
-            tools:targetApi="q">true</item>
+            tools:targetApi="q">false</item>
 
         <!-- Preference title -->
         <item name="android:textAppearanceListItem">?textAppearanceSubtitle1</item>
