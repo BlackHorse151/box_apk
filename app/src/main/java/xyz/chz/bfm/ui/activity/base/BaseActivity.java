@@ -75,7 +75,7 @@ public class BaseActivity extends MaterialActivity {
     public void onApplyTranslucentSystemBars() {
         super.onApplyTranslucentSystemBars();
         Window window = getWindow();
-        window.setStatusBarColor(Color.valueOf(0xF038424E));
+        window.setStatusBarColor(Color.valueOf(0xFF38424E));
 
         window.getDecorView()
             .post(
