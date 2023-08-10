@@ -137,19 +137,19 @@ public class MainActivity extends BaseActivity {
                                                         "<font color=\"#8e2e41\">[Error] </font>")
                                                     .replaceAll(
                                                         "\\[Warning\\]",
-                                                        "<font color=\"#E04835\">[Warning] </font>")
+                                                        "<font color=\"#FF5F15\">[Warning] </font>")
                                                     .replaceAll(
                                                         "Swap",
-                                                        "<font color=\"#E04835\">Swap</font>")
+                                                        "<font color=\"#FF5F15\">Swap</font>")
                                                     .replaceAll(
                                                         "CPU",
-                                                        "<font color=\"#E04835\">CPU</font>")
+                                                        "<font color=\"#FF5F15\">CPU</font>")
                                                     .replaceAll(
                                                         "Memory",
-                                                        "<font color=\"#E04835\">Memory</font>")
+                                                        "<font color=\"#FF5F15\">Memory</font>")
                                                     .replaceAll(
                                                         "Runtime",
-                                                        "<font color=\"#E04835\">Runtime</font>")
+                                                        "<font color=\"#FF5F15\">Runtime</font>")
                                                     .replaceAll("\n", "<br>")));
                                         if (sp.getBoolean("cbScroLog", false)) {
                                             binding.svLOG.fullScroll(View.FOCUS_DOWN);
