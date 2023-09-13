@@ -18,11 +18,8 @@ public final class ThemeUtil {
     private static final SharedPreferences preferences = App.getPreferences();
 
     public static final String MODE_NIGHT_FOLLOW_SYSTEM = "MODE_NIGHT_FOLLOW_SYSTEM";
-    public static final String MODE_NIGHT_NO = "MODE_NIGHT_NO";
-    public static final String MODE_NIGHT_YES = "MODE_NIGHT_YES";
 
     private static final String THEME_DEFAULT = "DEFAULT";
-    private static final String THEME_BLACK = "BLACK";
 
     private static final Map<String, Integer> colorThemeMap = new HashMap<>();
 
@@ -54,21 +51,14 @@ public final class ThemeUtil {
     }
 
     public static String getNightTheme(Context context) {
-        if (isBlackNightTheme() && ResourceUtils.isNightMode(context.getResources().getConfiguration())) {
-            return THEME_BLACK;
-        }
+    // Always return dark theme
         return THEME_DEFAULT;
     }
 
     @StyleRes
     public static int getNightThemeStyleRes(Context context) {
-        switch (getNightTheme(context)) {
-            case THEME_BLACK:
-                return R.style.ThemeOverlay_Black;
-            case THEME_DEFAULT:
-            default:
-                return R.style.ThemeOverlay;
-        }
+    // Always return the dark theme style
+        return R.style.DarkThemeOverlay;
     }
 
     public static String getColorTheme() {
@@ -77,11 +67,8 @@ public final class ThemeUtil {
 
     @StyleRes
     public static int getColorThemeStyleRes() {
-        Integer theme = colorThemeMap.get(getColorTheme());
-        if (theme == null) {
-            return R.style.ThemeOverlay_color_primary;
-        }
-        return theme;
+    // Always return the dark theme style
+        return R.style.DarkThemeOverlay_color_primary;
     }
 
     public enum CustomThemeColors {
@@ -118,21 +105,4 @@ public final class ThemeUtil {
             return resourceId;
         }
     }
-
-    public static int getDarkTheme(String mode) {
-        switch (mode) {
-            case MODE_NIGHT_FOLLOW_SYSTEM:
-                return DayNightDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
-            case MODE_NIGHT_YES:
-                return DayNightDelegate.MODE_NIGHT_YES;
-            case MODE_NIGHT_NO:
-                return DayNightDelegate.MODE_NIGHT_NO;
-            default:
-                return DayNightDelegate.MODE_NIGHT_YES;
-        }
-    }
-
-    public static int getDarkTheme() {
-        return getDarkTheme(preferences.getString("dark_theme", MODE_NIGHT_YES));
-    }
-        }
+}
