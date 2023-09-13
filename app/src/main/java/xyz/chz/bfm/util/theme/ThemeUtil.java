@@ -120,15 +120,7 @@ public final class ThemeUtil {
     }
 
     public static int getDarkTheme(String mode) {
-        switch (mode) {
-            case MODE_NIGHT_FOLLOW_SYSTEM:
-            default:
-                return DayNightDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
-            case MODE_NIGHT_YES:
-                return DayNightDelegate.MODE_NIGHT_YES;
-            case MODE_NIGHT_NO:
-                return DayNightDelegate.MODE_NIGHT_NO;
-        }
+        return DayNightDelegate.MODE_NIGHT_YES;
     }
 
     public static int getDarkTheme() {
