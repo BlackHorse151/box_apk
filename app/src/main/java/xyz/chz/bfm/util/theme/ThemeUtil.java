@@ -54,21 +54,12 @@ public final class ThemeUtil {
     }
 
     public static String getNightTheme(Context context) {
-        if (isBlackNightTheme() && ResourceUtils.isNightMode(context.getResources().getConfiguration())) {
-            return THEME_BLACK;
-        }
-        return THEME_DEFAULT;
+        return THEME_BLACK;
     }
 
     @StyleRes
     public static int getNightThemeStyleRes(Context context) {
-        switch (getNightTheme(context)) {
-            case THEME_BLACK:
-                return R.style.ThemeOverlay_Black;
-            case THEME_DEFAULT:
-            default:
-                return R.style.ThemeOverlay;
-        }
+        return R.style.ThemeOverlay_Black;
     }
 
     public static String getColorTheme() {
