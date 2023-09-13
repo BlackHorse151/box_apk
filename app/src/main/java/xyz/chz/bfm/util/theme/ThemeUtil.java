@@ -18,8 +18,11 @@ public final class ThemeUtil {
     private static final SharedPreferences preferences = App.getPreferences();
 
     public static final String MODE_NIGHT_FOLLOW_SYSTEM = "MODE_NIGHT_FOLLOW_SYSTEM";
+    public static final String MODE_NIGHT_NO = "MODE_NIGHT_NO";
+    public static final String MODE_NIGHT_YES = "MODE_NIGHT_YES";
 
     private static final String THEME_DEFAULT = "DEFAULT";
+    private static final String THEME_BLACK = "BLACK";
 
     private static final Map<String, Integer> colorThemeMap = new HashMap<>();
 
@@ -51,24 +54,24 @@ public final class ThemeUtil {
     }
 
     public static String getNightTheme(Context context) {
-    // Always return dark theme
-        return THEME_DEFAULT;
+        return THEME_BLACK;
     }
 
     @StyleRes
     public static int getNightThemeStyleRes(Context context) {
-    // Always return the dark theme style
-        return R.style.DarkThemeOverlay;
+        return R.style.ThemeOverlay_Black;
     }
-
     public static String getColorTheme() {
         return preferences.getString("theme_color", "COLOR_PRIMARY");
     }
 
     @StyleRes
     public static int getColorThemeStyleRes() {
-    // Always return the dark theme style
-        return R.style.DarkThemeOverlay_color_primary;
+        Integer theme = colorThemeMap.get(getColorTheme());
+        if (theme == null) {
+            return R.style.ThemeOverlay_color_primary;
+        }
+        return theme;
     }
 
     public enum CustomThemeColors {
@@ -104,5 +107,21 @@ public final class ThemeUtil {
         public int getResourceId() {
             return resourceId;
         }
+    }
+
+    public static int getDarkTheme(String mode) {
+        switch (mode) {
+            case MODE_NIGHT_FOLLOW_SYSTEM:
+            default:
+                return DayNightDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
+            case MODE_NIGHT_YES:
+                return DayNightDelegate.MODE_NIGHT_YES;
+            case MODE_NIGHT_NO:
+                return DayNightDelegate.MODE_NIGHT_NO;
+        }
+    }
+
+    public static int getDarkTheme() {
+        return getDarkTheme(preferences.getString("dark_theme", MODE_NIGHT_FOLLOW_SYSTEM));
     }
 }
