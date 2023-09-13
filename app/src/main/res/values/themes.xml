@@ -23,17 +23,17 @@
     <style
         name="Base.AppTheme.Light"
         parent="Theme.Material.Light.LightStatusBar">
-        <item name="android:statusBarColor">?android:colorBackground</item>
+        <item name="android:statusBarColor">#000000</item>
 
-        <item name="colorPrimary">#FF2196F3</item>
-        <item name="colorPrimaryVariant">?colorPrimary</item>
-        <item name="colorSecondary">?colorPrimary</item>
-        <item name="colorSecondaryVariant">?colorPrimary</item>
+        <item name="colorPrimary">#000000</item>
+        <item name="colorPrimaryVariant">#000000</item>
+        <item name="colorSecondary">#000000</item>
+        <item name="colorSecondaryVariant">#000000</item>
         <item name="colorOnSecondary">#FFFFFF</item>
         <item name="colorSurface">#FFFFFF</item>
-        <item name="colorError">#FFD32F2F</item>
-        <item name="colorNormal">#FF4CAF50</item>
-        <item name="colorInstall">#FF2196F3</item>
+        <item name="colorError">#FF0000</item>
+        <item name="colorNormal">#00FF00</item>
+        <item name="colorInstall">#0000FF</item>
 
         <item name="actionBarStyle">@style/Widget.Material.ActionBar.Surface</item>
         <item name="actionBarTheme">@style/ThemeOverlay.ActionBar</item>
@@ -63,15 +63,17 @@
     <style
         name="Base.AppTheme"
         parent="Theme.Material">
-        <item name="colorPrimary">#FF2196F3</item>
-        <item name="colorPrimaryVariant">?colorPrimary</item>
-        <item name="colorSecondary">?colorPrimary</item>
-        <item name="colorSecondaryVariant">?colorPrimary</item>
-        <item name="colorOnSecondary">#FF000000</item>
-        <item name="colorSurface">#FF212121</item>
-        <item name="colorError">#FFE57373</item>
-        <item name="colorNormal">#FF81C784</item>
-        <item name="colorInstall">#FF64B5F6</item>
+        <item name="android:statusBarColor">#000000</item>
+
+        <item name="colorPrimary">#000000</item>
+        <item name="colorPrimaryVariant">#000000</item>
+        <item name="colorSecondary">#000000</item>
+        <item name="colorSecondaryVariant">#000000</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="colorSurface">#FFFFFF</item>
+        <item name="colorError">#FF0000</item>
+        <item name="colorNormal">#00FF00</item>
+        <item name="colorInstall">#0000FF</item>
 
         <item name="actionBarStyle">@style/Widget.Material.ActionBar.Surface</item>
         <item name="actionBarTheme">@style/ThemeOverlay.ActionBar</item>
