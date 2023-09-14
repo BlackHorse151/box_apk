@@ -54,12 +54,21 @@ public final class ThemeUtil {
     }
 
     public static String getNightTheme(Context context) {
-        return THEME_BLACK;
+        if (isBlackNightTheme() && ResourceUtils.isNightMode(context.getResources().getConfiguration())) {
+            return THEME_BLACK;
+        }
+        return THEME_DEFAULT;
     }
 
     @StyleRes
     public static int getNightThemeStyleRes(Context context) {
-        return R.style.ThemeOverlay_Black;
+        switch (getNightTheme(context)) {
+            case THEME_BLACK:
+                return R.style.ThemeOverlay_Black;
+            case THEME_DEFAULT:
+            default:
+                return R.style.ThemeOverlay;
+        }
     }
 
     public static String getColorTheme() {
@@ -111,7 +120,15 @@ public final class ThemeUtil {
     }
 
     public static int getDarkTheme(String mode) {
-        return DayNightDelegate.MODE_NIGHT_YES;
+        switch (mode) {
+            case MODE_NIGHT_FOLLOW_SYSTEM:
+            default:
+                return DayNightDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
+            case MODE_NIGHT_YES:
+                return DayNightDelegate.MODE_NIGHT_YES;
+            case MODE_NIGHT_NO:
+                return DayNightDelegate.MODE_NIGHT_NO;
+        }
     }
 
     public static int getDarkTheme() {
